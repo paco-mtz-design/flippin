@@ -1,36 +1,75 @@
+body {
+	font-family: 'Noto Sans', sans-serif;
+	text-align: center;
+}
+
+#cards-container {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.titlings {
+	overflow: auto;
+	margin: 60px 0;
+}
+
+.credits {
+	overflow: auto;
+	margin: 60px 0;
+}
+
+.how_to {
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 40px;
+}
+
+h1 {font-size: 3em; margin-bottom: 30px}
+p {margin-bottom: 6px; line-height: 1.2em;}
+small {font-size: .7em; opacity: .4;}
+a {font-weight: bold;}
+strong {font-weight: bold;}
+
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000;
 	display: inline-block;
 	margin: 10px;
+	transition: 0.3s;
+	border: 3px solid white;
 }
-	/* flip the pane when hovered */
-	.flip-container:hover .flipper, .flip-container.hover .flipper {
-		transform: rotateY(180deg);
-	}
+
+.flip-container:hover {
+	border: 3px solid #3FD7F3;
+}
 
 .flip-container, .front, .back {
-	/*width: 314px;
-	height: 422px;*/
-	width: 290px;
-	height: 391px;
+	width: 261px;
+	height: 352px;
 }
 
 /* flip speed goes here */
 .flipper {
 	transition: 0.6s;
 	transform-style: preserve-3d;
-
 	position: relative;
+	cursor: pointer;
+}
+
+.back img {
+	width: 100%;
+	-webkit-box-shadow: 0px 7px 20px 0px rgba(71,71,71,.8);
+	-moz-box-shadow: 0px 7px 20px 0px rgba(71,71,71,.8);
+	box-shadow: 0px 7px 20px 0px rgba(71,71,71,.8);
 }
 
 /* hide back of pane during swap */
 .front, .back {
 	backface-visibility: hidden;
-
 	position: absolute;
 	top: 0;
 	left: 0;
+	text-align:center;
 }
 
 /* front pane, placed above back */
@@ -45,5 +84,20 @@
 /* back, initially hidden pane */
 .back {
 	transform: rotateY(180deg);
-	border: 1px solid #f0f0f0;
+}
+
+/* Flip cards by adding these classes */
+
+.flip-container.flip .flipper {
+	transform: rotateY(180deg);
+	z-index: 10;
+	transition: all 0.5s ease;
+}
+
+.flip-container.flip .back,
+.flip-container.flip .front {
+	width: 150%;
+	height: 150%;
+	top: -80px;
+	left: -25%;
 }
